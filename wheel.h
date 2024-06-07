@@ -1,6 +1,5 @@
 #pragma once
-// new line
-// second line
+
 #include <vector>
 using namespace std;
 
