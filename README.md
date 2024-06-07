@@ -1,3 +1,3 @@
 # Enigma-Machine
 
-my first repository
+The wheel assignment.
