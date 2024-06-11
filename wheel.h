@@ -15,15 +15,15 @@ class Wheel
    void loadLToR          ();
    void loadRToL          ();
    void convertToOffset   ();
+ 
+ public:
 
-public:
-
-   Wheel
-   (
-      const short       nEnts,
-      const unsigned int seed,
-      const short        cPos
-   );
+    Wheel
+    (
+    const short       nEnts,
+    const unsigned int seed,
+    const short        cPos
+    );
 
    //
    // Returns true
