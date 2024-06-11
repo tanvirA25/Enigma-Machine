@@ -1,38 +1,27 @@
-// Name: Tanvir Ahmed
-// CS 490
-// Assignment 1: Reflector
-
-
-// header guard to prevent multiple inclusion
-#ifndef Reflector_H
-#define Reflector_H
+#ifndef Reflector_h
+#define Reflector_h
 
 #include <iostream>
+#include <array>
+#include <cstdlib>
 
-//reflector class for singleton pattern
 class Reflector {
+    
+    public:
+        static Reflector& Instance() {
+            static Reflector instance;
+            return instance;
+        }
 
-// public member of reflector class
-public:
-    // returns simgleton instance of reflector
-    static Reflector &Instance(){
-        static Reflector ascii;
-        return ascii;
-    }
-    //gets the unsigned char and returns its reflected value
-    const unsigned char reflect(const unsigned char c);
+        const unsigned char reflect(const unsigned char c) const;
 
-// only can be accssed and modified within the reflector class
-private:
-
-    // array for character mapping
-    static int arr[95];
-
+    private:
+        std::array<int, 95> numbers;
+        Reflector();
+        ~Reflector() = default;
+        Reflector(const Reflector&) = delete;
+        Reflector& operator=(const Reflector&) = delete;
 
 };
-#endif
 
-
-  
-
-  
+#endif 
