@@ -1,6 +1,8 @@
 #include "Wheel.h"
 #include<random>
+
 #include<cstdlib>
+
 
 using namespace std;
 
@@ -22,8 +24,12 @@ void Wheel::loadLToR(){
         short j = dis(gen);
 
         const short jSav = lToR.at(j);
+
         lToR[i] = jSav;
         lToR[j] = iSav;
+
+        swap(lToR[iSav], lToR[jSav]);
+
     }
 
 
@@ -32,13 +38,18 @@ void Wheel::loadLToR(){
 void Wheel::loadRToL(){
  const int rRange = nRec -1;
     for (short i = 0; i < nRec; ++i){
+
         rToL.push_back(0);
+
+        rToL.push_back(i);
+
     }
     for (short i = 0; i < nRec; ++i){ 
         const short iSav = lToR.at(i);
         rToL[iSav] = i;
     }
 }
+
 
 
 void Wheel::convertToOffset(){
@@ -60,15 +71,29 @@ short Wheel::getLtoR(short i){
     else if (val >= nRec) val-= nRec;
     return val;
 
+
+void Wheel::convertToOffset(){
+
+
+    
+}
+
+short Wheel::getLtoR(short i){
+  
+
+
+
 }
 
 short Wheel::getRtoL(short i){
+
     const short index = (curPos + i) % nRec;
     short val = rToL.at(index);
     val+=i;
     if (val < 0) val += nRec;
     else if (val >= nRec) val-= nRec;
     return val;
+
 
 }
 
@@ -79,8 +104,11 @@ Wheel::Wheel(
 
     }
 
+
 Wheel::~Wheel(){
     
 
 
 }
+
+
