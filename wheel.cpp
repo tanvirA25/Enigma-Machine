@@ -21,7 +21,8 @@ void Wheel::loadLToR(){
         short j = dis(gen);
 
         const short jSav = lToR.at(j);
-        swap(lToR[iSav], lToR[jSav]);
+        lToR[i] = jSav;
+        lToR[j] = iSav;
     }
 
 
@@ -30,7 +31,7 @@ void Wheel::loadLToR(){
 void Wheel::loadRToL(){
  const int rRange = nRec -1;
     for (short i = 0; i < nRec; ++i){
-        rToL.push_back(i);
+        rToL.push_back(0);
     }
     for (short i = 0; i < nRec; ++i){ 
         const short iSav = lToR.at(i);
@@ -39,32 +40,34 @@ void Wheel::loadRToL(){
 }
 
 
-
 void Wheel::convertToOffset(){
+    for (short i = 0; i < nRec; ++i){
+        short offsett = lToR.at(i) - i;
+        lToR[i] = offsett;
+        offsett = rToL.at(i) - i;
+        rToL[i] = offsett;
 
 
-    
+    }
 }
 
 short Wheel::getLtoR(short i){
-  
-    if (i >=0 && i < nRec) {
-        return lToR[i];
-    }
-
-
-    return -1;
+    const short index = (curPos + i) % nRec;
+    short val = lToR.at(index);
+    val+=i;
+    if (val < 0) val += nRec;
+    else if (val >= nRec) val-= nRec;
+    return val;
 
 }
 
 short Wheel::getRtoL(short i){
-
-     if (i >=0 && i < nRec) {
-        return rToL[i];
-    }
-
-
-    return -1;
+    const short index = (curPos + i) % nRec;
+    short val = rToL.at(index);
+    val+=i;
+    if (val < 0) val += nRec;
+    else if (val >= nRec) val-= nRec;
+    return val;
 
 }
 
