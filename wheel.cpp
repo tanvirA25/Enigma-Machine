@@ -51,7 +51,7 @@ void Wheel::convertToOffset(){
 
     }
 }
-
+// getLtoR
 short Wheel::getLtoR(short i){
     const short index = (curPos + i) % nRec;
     short val = lToR.at(index);
