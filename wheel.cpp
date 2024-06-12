@@ -48,23 +48,13 @@ void Wheel::convertToOffset(){
 
 short Wheel::getLtoR(short i){
   
-    if (i >=0 && i < nRec) {
-        return lToR[i];
-    }
 
-
-    return -1;
 
 }
 
 short Wheel::getRtoL(short i){
 
-     if (i >=0 && i < nRec) {
-        return rToL[i];
-    }
-
-
-    return -1;
+     
 
 }
 
