@@ -1,4 +1,4 @@
-#include "wheel.h"
+#include "Wheel.h"
 #include<random>
 
 using namespace std;
