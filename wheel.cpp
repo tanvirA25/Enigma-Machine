@@ -1,5 +1,6 @@
-#include "wheel.h"
+#include "Wheel.h"
 #include<random>
+#include<cstdlib>
 
 using namespace std;
 
@@ -79,5 +80,6 @@ Wheel::Wheel(
     }
 
 Wheel::~Wheel(){
-    
+
+
 }
