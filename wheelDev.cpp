@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Wheel.h"
+#include "wheel.h"
 
 using namespace std;
 

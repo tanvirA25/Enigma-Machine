@@ -78,3 +78,6 @@ Wheel::Wheel(
 
     }
 
+Wheel::~Wheel(){
+    
+}
