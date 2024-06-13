@@ -11,6 +11,7 @@ class Wheel
    const short          nRec;
    short               notch;
    short              curPos;
+   unsigned int       seed;
 
    void loadLToR          ();
    void loadRToL          ();
@@ -60,10 +61,15 @@ class Wheel
    // wheel one position.
    //
    inline void  advance()
-   { 
+   {  
       curPos = (++curPos >= nRec) ?
                           0 : curPos;
    }
+   inline void reverse() {
+  
+    curPos = (--curPos < 0) ? nRec - 1 : curPos;
+}
+
 
    ~Wheel();
    
