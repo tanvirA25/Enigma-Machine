@@ -1,69 +1,89 @@
 #include "wheel.h"
-#include<random>
-#include<cstdlib>
-#include<iostream>
+#include <iostream>
+#include <vector>
+#include <random>
 
-using namespace std;
+Wheel::Wheel(short nEnts, unsigned int seed, short cPos)
+    : nRec(nEnts), seed(seed), curPos(cPos) {
+    loadLToR();
+    loadRToL();
+    convertToOffset();
+}
 
-bool debug = true;
+void Wheel::loadLToR() {
+    std::mt19937 gen(seed);
+    std::uniform_int_distribution<int> dis(0, nRec - 1);
 
-void Wheel::loadLToR(){
-    const int rRange = nRec -1;
-
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> dis(0,nRec);
-
-    for (short i = 0; i < nRec; ++i){
+    lToR.clear(); // Clear any previous content
+    for (int i = 0; i < nRec; ++i) {
         lToR.push_back(i);
     }
-     for (short i = 0; i < nRec; ++i){ 
-        
-        const short iSav = lToR.at(i);
-        short j = dis(gen);
 
-        const short jSav = lToR.at(j);
-        swap(lToR[iSav], lToR[jSav]);
+    for (int i = 0; i < nRec; ++i) {
+        int j = dis(gen);
+        std::swap(lToR[i], lToR[j]);
     }
-
-
 }
 
-void Wheel::loadRToL(){
- const int rRange = nRec -1;
-    for (short i = 0; i < nRec; ++i){
+void Wheel::loadRToL() {
+    rToL.clear(); // Clear any previous content
+    for (int i = 0; i < nRec; ++i) {
         rToL.push_back(i);
     }
-    for (short i = 0; i < nRec; ++i){ 
-        const short iSav = lToR.at(i);
-        rToL[iSav] = i;
+
+    for (int i = 0; i < nRec; ++i) {
+        rToL[lToR[i]] = i;
     }
 }
 
-
-
-void Wheel::convertToOffset(){
-
-
-    
-}
-
-short Wheel::getLtoR(short i){
-  
-
-
-}
-
-short Wheel::getRtoL(short i){
-
-     
-
-}
-
-Wheel::Wheel(
-    const short       nEnts,
-    const unsigned int seed,
-    const short        cPos): nRec(nEnts), curPos(cPos){
-
+void Wheel::convertToOffset() {
+    for (int i = 0; i < nRec; ++i) {
+        int offset = lToR[i] - i;
+        lToR[i] = offset;
+        offset = rToL[i] - i;
+        rToL[i] = offset;
     }
+}
 
+short Wheel::getLtoR(short i) {
+    int index = (curPos + i) % nRec;
+    int val = lToR[index];
+    val += i;
+    if (val < 0) val += nRec;
+    else if (val >= nRec) val -= nRec;
+    return val;
+}
+
+short Wheel::getRtoL(short i) {
+    int index = (curPos + i) % nRec;
+    int val = rToL[index];
+    val += i;
+    if (val < 0) val += nRec;
+    else if (val >= nRec) val -= nRec;
+    return val;
+}
+
+bool Wheel::atNotch() const {
+    return (curPos == notch);
+}
+
+void Wheel::resetCur(short cP) {
+    curPos = cP;
+}
+
+short Wheel::getCurPos() const {
+    return curPos;
+}
+
+void Wheel::advance() {
+    ++curPos;
+    curPos = (curPos >= nRec) ? 0 : curPos;
+}
+
+void Wheel::reverse() {
+    --curPos;
+    curPos = (curPos < 0) ? nRec - 1 : curPos;
+}
+
+Wheel::~Wheel() {
+}
