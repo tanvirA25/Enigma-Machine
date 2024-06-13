@@ -154,17 +154,6 @@ short Wheel::getCurPos() const {
 }
 
 
-
-void Wheel::advance() {
-    ++curPos;
-    curPos = (curPos >= nRec) ? 0 : curPos;
-}
-
-void Wheel::reverse() {
-    --curPos;
-    curPos = (curPos < 0) ? nRec - 1 : curPos;
-}
-
 Wheel::~Wheel() {
 }
 
