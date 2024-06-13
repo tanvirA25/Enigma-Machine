@@ -19,7 +19,7 @@ Wheel::Wheel(
     loadRToL();
     convertToOffset();
 
-
+}
 void Wheel::loadLToR() {
 
     for (short i = 0; i < nRec; ++i) {
