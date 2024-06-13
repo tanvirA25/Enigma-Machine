@@ -23,10 +23,9 @@ Wheel::Wheel(
     }
 
 void Wheel::loadLToR(){
-    const int rRange = nRec -1;
 
     mt19937 gen(seed);
-    uniform_int_distribution<> dis(0,rRange);
+    uniform_int_distribution<> dis(0,nRec);
 
 #include <iostream>
 #include <vector>
@@ -58,7 +57,6 @@ void Wheel::loadLToR() {
 }
 
 void Wheel::loadRToL(){
- const int rRange = nRec -1;
     for (short i = 0; i < nRec; ++i){
         rToL.push_back(0);
     }
