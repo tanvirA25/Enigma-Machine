@@ -12,7 +12,7 @@ class Wheel
    short               notch;
    short              curPos;
 
-   void loadLToR          (unsigned int seed);
+   void loadLToR          ();
    void loadRToL          ();
    void convertToOffset   ();
  
