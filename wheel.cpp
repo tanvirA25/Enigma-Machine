@@ -140,18 +140,6 @@ short Wheel::getRtoL(short i) {
     return val;
 }
 
-bool Wheel::atNotch() const {
-    return (curPos == notch);
-}
-
-void Wheel::resetCur(short cP) {
-    curPos = cP;
-}
-
-
-short Wheel::getCurPos() const {
-    return curPos;
-}
 
 
 Wheel::~Wheel() {
