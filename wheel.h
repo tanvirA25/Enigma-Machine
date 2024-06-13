@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-using namespace std;
 
 class Wheel
 {
@@ -71,6 +70,4 @@ class Wheel
 }
 
 
-   ~Wheel();
-   
-};
+
