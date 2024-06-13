@@ -1,6 +1,7 @@
 #include "wheel.h"
 #include<random>
 #include<cstdlib>
+#include<iostream>
 
 using namespace std;
 
