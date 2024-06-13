@@ -14,11 +14,11 @@ Wheel::Wheel(
 
     notch = rand() % nRec;
 
+
     loadLToR();
     loadRToL();
     convertToOffset();
 
-}
 
 void Wheel::loadLToR() {
 
@@ -51,6 +51,7 @@ void Wheel::convertToOffset() {
         rToL[i] = offsett;
     }
 }
+
 short Wheel::getLtoR(short i) {
     const short index = (curPos + i) % nRec;
     short val = lToR.at(index);
@@ -70,6 +71,7 @@ short Wheel::getRtoL(short i) {
     return val;
 
 }
+
 
 Wheel::~Wheel() {
     lToR.clear();
