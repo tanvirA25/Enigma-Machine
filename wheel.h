@@ -69,5 +69,9 @@ class Wheel
     curPos = (--curPos < 0) ? nRec - 1 : curPos;
 }
 
+Wheel::~Wheel(){
+
+}
+
 
 
