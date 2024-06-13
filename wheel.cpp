@@ -155,12 +155,6 @@ short Wheel::getCurPos() const {
 
 
 
-Wheel::~Wheel(){
-    
-
-
-}
-
 void Wheel::advance() {
     ++curPos;
     curPos = (curPos >= nRec) ? 0 : curPos;
