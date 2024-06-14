@@ -1,9 +1,10 @@
 #include "wheel.h"
-#include<random>
+#include<cstdlib>
 
 
 using namespace std;
 
+//wheel constructor initializer for number of entries, seed, and current position
 Wheel::Wheel(
     const short       nEnts,
     const unsigned int seed,
@@ -20,6 +21,7 @@ Wheel::Wheel(
 
 }
 
+// initializes the ltoR vector with random values from 0 to 9
 void Wheel::loadLToR() {
 
     for (short i = 0; i < nRec; ++i) {
@@ -33,8 +35,9 @@ void Wheel::loadLToR() {
 
 }
 
+// initializes the rtoL vector with random values from 0 to 9
 void Wheel::loadRToL() {
-    const int rRange = nRec - 1;
+
     for (short i = 0; i < nRec; ++i) {
         rToL.push_back(0);
     }
@@ -43,6 +46,8 @@ void Wheel::loadRToL() {
     }
 }
 
+
+// gets absolute values in ltoR and rToL to offsett realtive to their indices
 void Wheel::convertToOffset() {
     for (short i = 0; i < nRec; ++i) {
         short offsett = lToR.at(i) - i;
@@ -51,6 +56,8 @@ void Wheel::convertToOffset() {
         rToL[i] = offsett;
     }
 }
+
+//computes the transformed value from ltoR using the current position and index
 short Wheel::getLtoR(short i) {
     const short index = (curPos + i) % nRec;
     short val = lToR.at(index);
@@ -61,6 +68,7 @@ short Wheel::getLtoR(short i) {
 
 }
 
+//computes the transformed value from rtoL using the current position and index
 short Wheel::getRtoL(short i) {
     const short index = (curPos + i) % nRec;
     short val = rToL.at(index);
@@ -71,6 +79,7 @@ short Wheel::getRtoL(short i) {
 
 }
 
+// clear the vector
 Wheel::~Wheel() {
     lToR.clear();
     rToL.clear();
