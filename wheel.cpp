@@ -15,6 +15,7 @@ Wheel::Wheel(
 
     notch = rand() % nRec;
 
+
     loadLToR();
     loadRToL();
     convertToOffset();
@@ -57,6 +58,7 @@ void Wheel::convertToOffset() {
     }
 }
 
+
 //computes the transformed value from ltoR using the current position and index
 short Wheel::getLtoR(short i) {
     const short index = (curPos + i) % nRec;
@@ -78,6 +80,7 @@ short Wheel::getRtoL(short i) {
     return val;
 
 }
+
 
 // clear the vector
 Wheel::~Wheel() {
