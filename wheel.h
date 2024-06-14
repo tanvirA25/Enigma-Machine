@@ -70,6 +70,8 @@ public:
         curPos = (++curPos >= nRec) ?
             0 : curPos;
     }
+
+    // reverse wheel position by one
     inline void reverse() {
 
         curPos = (--curPos < 0) ? nRec - 1 : curPos;
