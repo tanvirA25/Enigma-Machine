@@ -1,5 +1,5 @@
 #include "wheel.h"
-#include<random>
+#include<cstdlib>
 
 
 using namespace std;
