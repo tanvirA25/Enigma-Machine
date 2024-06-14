@@ -12,7 +12,7 @@ Wheel::Wheel(
 
     srand(seed);
 
-    notch = rand() % nRec;
+    notch = rand() % nRec-1;
 
 
     loadLToR();
