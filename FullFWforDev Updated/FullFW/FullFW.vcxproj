@@ -129,11 +129,14 @@
   <ItemGroup>
     <ClCompile Include="BlackFileInterface.cpp" />
     <ClCompile Include="FullFW.cpp" />
+    <ClCompile Include="NESEncryptorControl.cpp" />
+    <ClCompile Include="NESEncryptorFacade.cpp" />
     <ClCompile Include="Plugboard.cpp" />
     <ClCompile Include="RedFileInterface.cpp" />
     <ClCompile Include="Reflector.cpp" />
     <ClCompile Include="UserInput.cpp" />
     <ClCompile Include="Wheel.cpp" />
+    <ClCompile Include="WheelAssay.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AASInterface.h" />
