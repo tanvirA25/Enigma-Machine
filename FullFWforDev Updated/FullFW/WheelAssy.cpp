@@ -1,5 +1,4 @@
 #include "WheelAssy.h"
-#include "Wheel.h"
 
 static short nents = 96;
 static unsigned int seed1 = 111;
