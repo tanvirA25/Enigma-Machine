@@ -10,6 +10,13 @@ class WheelAssy
     //
     WheelAssy();
 
+private:
+    Wheel *wheel1;
+    Wheel *wheel2;
+    Wheel *wheel3;
+
+
+
 public:
 
     //
