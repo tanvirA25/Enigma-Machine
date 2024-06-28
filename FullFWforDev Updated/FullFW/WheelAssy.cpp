@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "WheelAssy.h"
 
 static short nents = 96;
@@ -34,7 +35,7 @@ void WheelAssy::advance() {
 
 
 	}
-	wheel1->advance();
+    wheel1->advance();
 
 }
 void WheelAssy::reset() {
@@ -42,6 +43,12 @@ void WheelAssy::reset() {
 	wheel2->resetCur(pos2);
 	wheel3->resetCur(pos3);
 
+// Resets the wheels to their initial positions
+void WheelAssy::reset() {
+    printf("Wheels reset\n");
+    wheel1->resetCur(c1);
+    wheel2->resetCur(c2);
+    wheel3->resetCur(c3);
 }
 unsigned char WheelAssy::lToR(unsigned char c) {
 	unsigned char c1 = wheel1->getRtoL(c);
@@ -64,3 +71,15 @@ WheelAssy::WheelAssy() {
 	delete wheel3;
 }
 
+//Set c3 to Wheel 3 lToR(c)
+//Set c2 to Wheel 2 lToR(c3)
+//Set c1 to Wheel 1 lToR(c2)
+//Return c1
+unsigned char WheelAssy::lToR(unsigned char c) {
+    printf("Left to right\n");
+    short c3 = wheel1->getLtoR(c);
+    short c2 = wheel2->getLtoR(c1);
+    short c1 = wheel3->getLtoR(c2);
+    printf("%c\n", c3 + 32);
+    return static_cast<unsigned char> (c1+32);
+}

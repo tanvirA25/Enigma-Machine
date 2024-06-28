@@ -1,5 +1,5 @@
-#if !defined        (NESEncryptortFacade____INCL)
-#define              NESEncryptortFacade____INCL
+#if !defined        (NESEncryptorFacade____INCL)
+#define              NESEncryptorFacade____INCL
 
 #include                     <iostream>
 #include "Plugboard.h"
@@ -27,14 +27,11 @@ class NESEncryptortFacade
 
 public:
 
-    //
-    // Meyer's Singleton
-    // pattern.
-    //
-    static NESEncryptortFacade& Instance()
+    // Meyer's Singleton pattern.
+    static NESEncryptorFacade& Instance()
     {
-        static NESEncryptortFacade nef;
-        return                     nef;
+        static NESEncryptorFacade nef;
+        return nef;
     }
 
     bool encrypt(unsigned char c) {
@@ -47,10 +44,8 @@ public:
 
     void reset(){}
 
-    ~NESEncryptortFacade() {};
+    ~NESEncryptorFacade() {};
 
 };
-
-
 
 #endif

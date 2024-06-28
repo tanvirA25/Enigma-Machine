@@ -33,15 +33,17 @@ class NESEncryptorControl
 	
 public:
 
-	static NESEncryptorControl& Instance()
-	{
+    // Meyer's Singleton pattern.
+    static NESEncryptorControl& Instance()
+    {
 		static NESEncryptorControl NESC;
 		return NESC;
-	}
+    }
 
 	void start();
 
 
+    ~NESEncryptorControl() {};
 
 };
 
