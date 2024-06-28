@@ -1,5 +1,4 @@
-#if !defined        (WheelAssy____INCL)
-#define              WheelAssy____INCL
+
 #include "Wheel.h"
 
 class WheelAssy
@@ -46,4 +45,4 @@ public:
 
 
 
-#endif
+
