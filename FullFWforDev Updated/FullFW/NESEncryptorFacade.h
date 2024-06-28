@@ -1,39 +1,39 @@
-#if !defined        (NESEncryptortFacade____INCL)
-#define              NESEncryptortFacade____INCL
+#if !defined        (NESEncryptorFacade____INCL)
+#define              NESEncryptorFacade____INCL
 
-#include                     <iostream>
+#include <iostream>
+#include "NESEncryptorFacade.h"
+#include "RedFileInterface.h"
+#include "BlackFileInterface.h"
+#include "WheelAssy.h"
+#include "Plugboard.h"
+#include "Reflector.h"
 
-class NESEncryptortFacade
+class NESEncryptorFacade
 {
 
+    // Constructor is private.
+    //WheelAssy& wheel_assay;
+    //Plugboard& plug_board;
+    //Reflector& reflec_tor;
 
-
-    //
-    // Constructor is
-    // private.
-    //
-    NESEncryptortFacade();
+    NESEncryptorFacade() {}
 
 public:
 
-    //
-    // Meyer's Singleton
-    // pattern.
-    //
-    static NESEncryptortFacade& Instance()
+    // Meyer's Singleton pattern.
+    static NESEncryptorFacade& Instance()
     {
-        static NESEncryptortFacade nef;
-        return                     nef;
+        static NESEncryptorFacade nef;
+        return nef;
     }
 
-    bool encrypt() { return false; }
+    bool encrypt(char c);
 
-    bool decrypt() { return false; }
+    bool decrypt(char c);
 
-    ~NESEncryptortFacade() {};
+    ~NESEncryptorFacade() {};
 
 };
-
-
 
 #endif

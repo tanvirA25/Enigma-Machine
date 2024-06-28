@@ -136,12 +136,13 @@
     <ClCompile Include="Reflector.cpp" />
     <ClCompile Include="UserInput.cpp" />
     <ClCompile Include="Wheel.cpp" />
-    <ClCompile Include="WheelAssay.cpp" />
+    <ClCompile Include="WheelAssy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AASInterface.h" />
     <ClInclude Include="ACSInterface.h" />
     <ClInclude Include="BlackFileInterface.h" />
+    <ClInclude Include="NESEncryptorControl.h" />
     <ClInclude Include="NESEncryptorFacade.h" />
     <ClInclude Include="RedFileInterface.h" />
     <ClInclude Include="Plugboard.h" />
@@ -149,6 +150,13 @@
     <ClInclude Include="UserInput.h" />
     <ClInclude Include="Wheel.h" />
     <ClInclude Include="WheelAssy.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="MyInFile.txt" />
+    <Text Include="MyOutFile.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MyOutFile.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

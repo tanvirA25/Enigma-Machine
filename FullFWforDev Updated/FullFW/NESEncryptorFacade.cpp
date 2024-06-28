@@ -1,4 +1,10 @@
+#include <iostream>
 #include "NESEncryptorFacade.h"
+#include "WheelAssy.h"
+#include "Plugboard.h"
+#include "Reflector.h"
+
+using namespace std;
 //Open red file for read in RedFileInterface
 //Open black file for write in BlackFileInterface
 //Reset wheels to initial positions
@@ -13,8 +19,15 @@
 //Call putNextChar(c) in the black file
 //Close red file
 //Close black file
-bool encrypt() {
-	return false;
+bool NESEncryptorFacade::encrypt(char c) {
+	c = Plugboard::Instance().getPBC(c);
+	c = WheelAssy::Instance().rToL(c-32);
+	c = Reflector::Instance().reflect(c);
+	c = WheelAssy::Instance().lToR(c-32);
+	c = Plugboard::Instance().getPBC(c);
+	WheelAssy::Instance().advance();
+
+	return true;
 }
 
 
@@ -32,6 +45,13 @@ bool encrypt() {
 //Call putNextChar(c) in the red file
 //Close red file
 //Close black file
-bool decrypt() {
-	return false;
+bool NESEncryptorFacade::decrypt(char c) {
+	c = Plugboard::Instance().getPBC(c);
+	c = WheelAssy::Instance().rToL(c-32);
+	c = Reflector::Instance().reflect(c);
+	c = WheelAssy::Instance().lToR(c-32);
+	c = Plugboard::Instance().getPBC(c);
+	WheelAssy::Instance().advance();
+
+	return true;
 }
