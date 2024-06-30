@@ -1,3 +1,5 @@
+#if !defined        (WheelAssy____INCL)
+#define              WheelAssy____INCL
 
 #include "Wheel.h"
 
@@ -27,12 +29,11 @@ class WheelAssy
         wheel3 = new  Wheel(nRecs, s3, c3, n3);
     }
 
-private:
-    Wheel *wheel1;
-    Wheel *wheel2;
-    Wheel *wheel3;
-
-
+    WheelAssy() {
+        wheel1 = new  Wheel(nRecs, s1, c1, n1);
+        wheel2 = new  Wheel(nRecs, s2, c2, n2);
+        wheel3 = new  Wheel(nRecs, s3, c3, n3);
+    }
 
 public:
 
@@ -58,4 +59,4 @@ public:
 
 
 
-
+#endif

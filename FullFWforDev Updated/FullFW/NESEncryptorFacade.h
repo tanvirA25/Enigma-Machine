@@ -1,29 +1,23 @@
 #if !defined        (NESEncryptorFacade____INCL)
 #define              NESEncryptorFacade____INCL
 
-#include                     <iostream>
-#include "Plugboard.h"
+#include <iostream>
+#include "NESEncryptorFacade.h"
+#include "RedFileInterface.h"
+#include "BlackFileInterface.h"
 #include "WheelAssy.h"
+#include "Plugboard.h"
 #include "Reflector.h"
 
-
-class NESEncryptortFacade
+class NESEncryptorFacade
 {
 
+    // Constructor is private.
+    //WheelAssy& wheel_assay;
+    //Plugboard& plug_board;
+    //Reflector& reflec_tor;
 
-    Plugboard& PB;
-    WheelAssy& WHASS;
-    Reflector& REF;
-    //
-    // Constructor is
-    // private.
-    //
-    NESEncryptortFacade() :
-
-        PB(Plugboard::Instance()),
-        WHASS(WheelAssy::Instance()),
-        REF(Reflector::Instance())
-    {};
+    NESEncryptorFacade() {}
 
 public:
 
@@ -34,15 +28,9 @@ public:
         return nef;
     }
 
-    bool encrypt(unsigned char c) {
-        return false;
-    }
+    bool encrypt(char c);
 
-    bool decrypt(unsigned char c) {
-        return false;
-    }
-
-    void reset(){}
+    bool decrypt(char c);
 
     ~NESEncryptorFacade() {};
 
