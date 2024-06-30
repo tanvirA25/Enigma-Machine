@@ -1,70 +1,33 @@
 #pragma once
 
-#include   <iostream>
-#include     <string>
-#include   <iostream>
-#include    <fstream>
+#include <iostream>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
-class RedFileInterface
-{
+class RedFileInterface {
 
-   const std::string  RedInFN;
-   const std::string RedOutFN;
+    fstream MyInFile;
 
-   bool    fileOpen;
-   bool  fileOFRead;
-
-   ifstream  infile;
-   ofstream outfile;
-
-   //
-   // Constructor is
-   // private.
-   //
-   RedFileInterface() :
-      RedInFN  ("MyInFile.txt"),
-      RedOutFN("MyOutFile.txt"),
-      fileOpen(false)
-   {}
+    // Constructor is private.
+    RedFileInterface() {}
 
 public:
-
-    //
-    // Meyer's Singleton
-    // pattern.
-    //
-    static RedFileInterface& Instance()
-    {
+    // Meyer's Singleton pattern.
+    static RedFileInterface & Instance() {
         static RedFileInterface fB;
-        return                  fB;
+        return fB;
     }
 
-    //
-    // Implement the following
-    // operations for both the
-    // red and black files.
-    // 
-    // All return
-    // true if OK,
-    // otherwise
-    // false.
-    //
+    // Implement the following operations for both the red and black files.
+    // All return true if OK, otherwise false.
     bool openForRead();
-
     unsigned char getNextChar();
-
     bool openForWrite();
-
-    bool putNextChar
-       (unsigned char c);
-
+    bool putNextChar(unsigned char c);
     bool eof();
-
     bool close();
 
-    ~RedFileInterface() {};
-
+    ~RedFileInterface() {}
 };
-

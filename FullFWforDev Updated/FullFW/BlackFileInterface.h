@@ -1,70 +1,33 @@
 #pragma once
 
-#include   <iostream>
-#include     <string>
-#include    <fstream>
+#include <iostream>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
-class BlackFileInterface
-{
+class BlackFileInterface {
 
-   const std::string  BlackInFN;
-   const std::string BlackOutFN;
+    fstream MyInFile;
 
-   bool    fileOpen;
-   bool  fileOFRead;
-
-   ifstream  infile;
-   ofstream outfile;
-
-   //
-   // Constructor is
-   // private.
-   //
-   BlackFileInterface() :
-      BlackInFN ("MyOutFile.dat"),
-      BlackOutFN("MyOutFile.dat"),
-      fileOpen(false)
-   {}
+    // Constructor is private.
+    BlackFileInterface() {}
 
 public:
+    // Meyer's Singleton pattern.
+    static BlackFileInterface& Instance() {
+        static BlackFileInterface fB;
+        return fB;
+    }
 
-   //
-   // Meyer's Singleton
-   // pattern.
-   //
-   static BlackFileInterface& Instance()
-   {
-      static BlackFileInterface fB;
-      return                    fB;
-   }
+    // Implement the following operations for both the Black and black files.
+    // All return true if OK, otherwise false.
+    bool openForRead();
+    unsigned char getNextChar();
+    bool openForWrite();
+    bool putNextChar(unsigned char c);
+    bool eof();
+    bool close();
 
-   //
-   // Implement the following
-   // operations for both the
-   // Black and black files.
-   // 
-   // All return
-   // true if OK,
-   // otherwise
-   // false.
-   //
-   bool openForRead();
-
-   unsigned char getNextChar();
-
-   bool openForWrite();
-
-   bool putNextChar
-   (unsigned char c);
-
-   bool eof();
-
-   bool close();
-
-   ~BlackFileInterface() {};
-
+    ~BlackFileInterface() {}
 };
-
-

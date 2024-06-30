@@ -1,66 +1,65 @@
 #include "RedFileInterface.h"
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
+// All return true if OK, otherwise false.
 bool RedFileInterface::openForRead() {
-    if (fileOpen)       
-        return false;
-    infile.open(RedInFN, ios::in);
-    fileOpen = infile.is_open();
-    fileOFRead = fileOpen;
-    return fileOpen;
-}
-
-bool RedFileInterface::openForWrite() {
-    if (fileOpen)    
-        return false;
-    outfile.open(RedOutFN, ios::out | ios::trunc);
-    fileOpen = outfile.is_open();
-    fileOFRead = false;
-    return fileOpen;
-}
-
-bool RedFileInterface::eof() {
-    if (fileOpen == false)
-        return true;
-    const bool b = fileOFRead && infile.eof();
-    return b;
-}
-
-bool RedFileInterface::close() {
-    if (fileOpen == false)
-        return true;
-    bool result;
-    if (fileOFRead) {
-        infile.close();
-        result = infile.good();
-    }
-    else {
-        outfile.close();
-        result = outfile.good();
-    }
-
-    fileOpen = (result == false);
-
-    return result;
+	if (!MyInFile) {
+		// printf("Red not open for read\n");
+		return false;
+	}
+	// printf("Red open for read\n");
+	MyInFile.open("MyInFile.txt", ios::in);
+	return true;
 }
 
 unsigned char RedFileInterface::getNextChar() {
-    if (fileOpen && fileOFRead) {
-        if (eof() == false) {
-            unsigned char c;
-            infile >> c;
-            return c;
-        }
-    }
-    return 0;
+	if (!MyInFile.good()) {
+		// printf("No next char\n");
+		return 0;
+	}
+	// printf("Red get char\n");
+	return MyInFile.get();
+}
+
+bool RedFileInterface::openForWrite() {
+	if (!MyInFile) {
+		// printf("Red not open for write\n");
+		return false;
+	}
+	// printf("Red open for write\n");
+	MyInFile.open("MyOutFile.txt", ios::out);
+	return true;
 }
 
 bool RedFileInterface::putNextChar(unsigned char c) {
-    if (fileOpen && (fileOFRead == false))
-        outfile << c;
+	if (MyInFile) {
+		// printf("Red put next char\n");
+		MyInFile.put(c);
+		return true;
+	}
+	// printf("Red can't put next char\n");
+	return false;
+}
 
-    const bool b = outfile.good();
+bool RedFileInterface::eof() {
+	if (MyInFile.eof()) {
+		// printf("Red EOF\n");
+		return true;
+	}
+	// printf("Red not EOF\n");
+	return false;
+}
 
-    return b;
+bool RedFileInterface::close() {
+	if (!MyInFile) {
+		// printf("Red not close file\n");
+		return false;
+	}
+	// printf("Red close file\n");
+	MyInFile.flush();
+	MyInFile.close();
+	return true;
 }

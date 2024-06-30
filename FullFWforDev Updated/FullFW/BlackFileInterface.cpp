@@ -1,66 +1,65 @@
 #include "BlackFileInterface.h"
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
 
 using namespace std;
 
 bool BlackFileInterface::openForRead() {
-    if (fileOpen) 
-        return false;
-    infile.open(BlackInFN, ios::in);
-    fileOpen = infile.is_open();
-    fileOFRead = fileOpen;
-    return fileOpen;
-}
-
-bool BlackFileInterface::openForWrite() {
-    if (fileOpen)
-        return false;
-    outfile.open(BlackOutFN, ios::out | ios::trunc);
-    fileOpen = outfile.is_open();
-    fileOFRead = false;
-    return fileOpen;
-}
-
-bool BlackFileInterface::eof() {
-    if (fileOpen == false)
-        return true;
-    const bool b = fileOFRead && infile.eof();
-    return b;
-}
-
-bool BlackFileInterface::close() {
-    if (fileOpen == false)
-        return true;
-    bool result;
-    if (fileOFRead) {
-        infile.close();
-        result = infile.good();
-    }
-    else {
-        outfile.close();
-        result = outfile.good();
-    }
-
-    fileOpen = (result == false);
-
-    return result;
+	if (!MyInFile) {
+		// printf("Black not open for read\n");
+		return false;
+	}
+	// printf("Black open for read\n");
+	MyInFile.open("MyOutFile.dat", ios::in);
+	return true;
 }
 
 unsigned char BlackFileInterface::getNextChar() {
-    if (fileOpen && fileOFRead) {
-        if (eof() == false) {
-            unsigned char c;
-            infile >> c;
-            return c;
-        }
-    }
-    return 0;
+	if (!MyInFile.good()) {
+		// printf("No next char\n");
+		return 0;
+	}
+	// printf("Black get char\n");
+	return MyInFile.get();
+}
+
+bool BlackFileInterface::openForWrite() {
+	if (!MyInFile) {
+		// printf("Black not open for write\n");
+		return false;
+	}
+	// printf("Black open for write\n");
+	MyInFile.open("MyOutFile.dat", ios::out);
+	return true;
 }
 
 bool BlackFileInterface::putNextChar(unsigned char c) {
-    if (fileOpen && (fileOFRead == false))
-        outfile << c;
+	if (MyInFile) {
+		// printf("Black put next char\n");
+		MyInFile.put(c);
+		return true;
+	}
+	// printf("Black can't put next char\n");
+	return false;
+}
 
-    const bool b = outfile.good();
+bool BlackFileInterface::eof() {
+	if (MyInFile.eof()) {
+		// printf("Black EOF\n");
+		return true;
+	}
+	// printf("Black not EOF\n");
+	return false;
+}
 
-    return b;
+bool BlackFileInterface::close() {
+	if (!MyInFile) {
+		// printf("Black not close file\n");
+		return false;
+	}
+	// printf("Black close file\n");
+	MyInFile.flush();
+	MyInFile.close();
+	return true;
 }
