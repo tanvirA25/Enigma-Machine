@@ -2,17 +2,28 @@
 #define              NESEncryptortFacade____INCL
 
 #include                     <iostream>
+#include "Plugboard.h"
+#include "WheelAssy.h"
+#include "Reflector.h"
+
 
 class NESEncryptortFacade
 {
 
 
-
+    Plugboard& PB;
+    WheelAssy& WHASS;
+    Reflector& REF;
     //
     // Constructor is
     // private.
     //
-    NESEncryptortFacade();
+    NESEncryptortFacade() :
+
+        PB(Plugboard::Instance()),
+        WHASS(WheelAssy::Instance()),
+        REF(Reflector::Instance())
+    {};
 
 public:
 
@@ -26,9 +37,15 @@ public:
         return                     nef;
     }
 
-    bool encrypt() { return false; }
+    bool encrypt(unsigned char c) {
+        return false;
+    }
 
-    bool decrypt() { return false; }
+    bool decrypt(unsigned char c) {
+        return false;
+    }
+
+    void reset(){}
 
     ~NESEncryptortFacade() {};
 
