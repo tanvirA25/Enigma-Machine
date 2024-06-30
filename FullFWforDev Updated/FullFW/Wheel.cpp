@@ -1,5 +1,6 @@
 #include "wheel.h"
 #include <cstdlib>
+#include <stdio.h>
 
 using namespace std;
 
@@ -61,28 +62,34 @@ void Wheel::convertToOffset() {
 
 // Computes the transformed value from ltoR using the current position and index
 short Wheel::getLtoR(short i) {
+    printf("getLtoR\n");
     const short index = (curPos + i) % nRec;
     short val = lToR.at(index);
+    printf("i: %i(%c)   index: %i(%c)   val: %i(%c)\n", i, i+32, index, index+32, val, val+32);
     val += i;
-    if (val < 0) val += nRec;
-    else if (val >= nRec) val -= nRec;
+    if (val < 0) { val += nRec; }
+    else if (val >= nRec) { val -= nRec; }
+    printf("val: %c\n", val+32);
     return val;
 }
 
 
 // Computes the transformed value from rtoL using the current position and index
 short Wheel::getRtoL(short i) {
+    printf("getRtoL\n");
     const short index = (curPos + i) % nRec;
     short val = rToL.at(index);
+    printf("i: %i(%c)   index: %i(%c)   val: %i(%c)\n", i, i+32, index, index+32, val, val+32);
     val += i;
-    if (val < 0) val += nRec;
-    else if (val >= nRec) val -= nRec;
+    if (val < 0) { val += nRec; }
+    else if (val >= nRec) { val -= nRec; }
+    printf("val: %c\n", val+32);
     return val;
 }
 
 
 // Clear the vector
-//Wheel::~Wheel() {
-//    lToR.clear();
-//    rToL.clear();
-//}
+Wheel::~Wheel() {
+    lToR.clear();
+    rToL.clear();
+}

@@ -35,15 +35,11 @@ public:
     inline short getCurPos() { return curPos; }
 
     // Advance the wheel one position.
-    inline void  advance() {
-        curPos = (++curPos >= nRec) ? 0 : curPos;
-    }
+    inline void advance() { curPos = (++curPos >= nRec) ? 0 : curPos; }
 
     // Reverse the wheel one position.
-    inline void reverse() {
-        curPos = (--curPos < 0) ? nRec - 1 : curPos;
-    }
+    inline void reverse() { curPos = (--curPos < 0) ? nRec - 1 : curPos; }
 
-    ~Wheel() {};
+    ~Wheel();
 
 };

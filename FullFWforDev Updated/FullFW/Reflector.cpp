@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "Reflector.h"
 
 // This mayhaps needs to be changed.
@@ -21,11 +22,11 @@ const unsigned char Reflector::reflect(const unsigned char c) const {
     if (c == 10) return 31;
     if (c == 31) return 10;
     if (c < OFFSET || c > LAST) {
-        std::cout << "Bad value: " << c << " TERMINATING" << std::endl;
+        std::cout << "Bad value: " << c << "\nTERMINATING" << std::endl;
         std::exit(1);
     }
-
-    return static_cast<unsigned char> (numbers[c - 32] + 32);
+    printf("Reflect %c to %c\n", c, numbers[c-32] + 32);
+    return static_cast<unsigned char> (numbers[c-32] + 32);
 }
 
 
