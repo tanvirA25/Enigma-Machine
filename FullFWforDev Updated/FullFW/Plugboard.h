@@ -1,31 +1,28 @@
 #pragma once
 
-class Plugboard
-   {
+#include <map>
+
+class Plugboard {
 
       enum { DEBUG = false };
 
+      const static unsigned char OFFSET = 32;
+      const static unsigned char LAST = 126;
 
-      //
-      // Constructor is
-      // private.
-      //
+      std::map<int, int> plugs;
+
+      // Constructor is private.
       Plugboard();
 
    public:
 
-      //
-      // Meyer's Singleton
-      // pattern.
-      //
-      static Plugboard& Instance()
-      {
+      // Meyer's Singleton pattern.
+      static Plugboard& Instance() {
          static Plugboard pB;
-         return           pB;
+         return pB;
       }
 
-      unsigned char
-         getPBC(unsigned char c);
+      unsigned char getPBC(unsigned char c);
 
       ~Plugboard();
 
