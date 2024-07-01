@@ -1,23 +1,40 @@
 #pragma once
 
+#include "ACSInterface.h"
+#include "AASInterface.h"
+#include "UserInput.h"
+#include "RedFileInterface.h"
+#include "BlackFileInterface.h"
+#include "NESEncryptorFacade.h"
+
+
+
 class NESEncryptorControl
+
 {
 
-    NESEncryptorControl() {}
-    //NESEncryptorControl(const NESEncryptorControl&) = delete;
-    //NESEncryptorControl& operator=(const NESEncryptorControl&) = delete;
+	ACSInterface& ACSI;
+	AASInterface& AAS;
+	UserInput& UI;
+	RedFileInterface& rf;
+	BlackFileInterface& bf;
+	NESEncryptorFacade& NEF;
 
+	NESEncryptorControl() :
+		ACSI(ACSInterface::Instance()),
+		AAS(AASInterface::Instance()),
+		UI(UserInput::Instance()),
+		rf(RedFileInterface::Instance()),
+		bf(BlackFileInterface::Instance()),
+		NEF(NESEncryptorFacade::Instance()) {}
+	
 public:
 
-    // Meyer's Singleton pattern.
-    static NESEncryptorControl& Instance()
-    {
+	static NESEncryptorControl& Instance() {
 		static NESEncryptorControl NESC;
 		return NESC;
-    }
+	}
 
-    static void start();
-
-    ~NESEncryptorControl() {};
+	void start();
 
 };

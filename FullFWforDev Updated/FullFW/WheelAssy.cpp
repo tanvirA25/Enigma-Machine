@@ -22,9 +22,9 @@ unsigned char WheelAssy::rToL(unsigned char c) {
 unsigned char WheelAssy::lToR(unsigned char c) {
     printf("Left to right\n");
     short c3 = wheel1->getLtoR(c);
-    short c2 = wheel2->getLtoR(c1);
+    short c2 = wheel2->getLtoR(c3);
     short c1 = wheel3->getLtoR(c2);
-    printf("%c\n", c3 + 32);
+    printf("%c\n", c1 + 32);
     return c1 + 32;
 }
 

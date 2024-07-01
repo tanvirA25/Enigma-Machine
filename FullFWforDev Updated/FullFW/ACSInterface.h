@@ -25,7 +25,7 @@ public:
 
    inline bool authorize() 
    {
-      cout << "Authorization OK\n\n";
+      std::cout << "Authorization OK\n\n";
       return true; 
    }
 

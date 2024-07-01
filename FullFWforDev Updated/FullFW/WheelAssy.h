@@ -18,9 +18,9 @@ class WheelAssy
     const int c1 = 11;
     const int c2 = 22;
     const int c3 = 33;
-    const int n1 = 91;
-    const int n2 = 91;
-    const int n3 = 17;
+    //const int n1 = 91;
+    //const int n2 = 91;
+    //const int n3 = 17;
     
 
     WheelAssy() {

@@ -11,22 +11,15 @@ Plugboard::~Plugboard() {}
 
 unsigned char Plugboard::getPBC(unsigned char c)
 {
-
-	//
-	// If 3 is connected
-	// to 1 then
-	// if (c==3) return 1;
-	// if (c==1) return 3;
-	//   etc.
-	//
+	printf("Plugboard start: %c\n", c);
 	if (c == 10) { return 31; }
 	if (c == 31) { return 10; }
 	if (c < OFFSET || c > LAST) {
 		printf("Bad value: %c\nTERMINATING\n", c);
 		std::exit(1);
 	}
-	if (plugs.find(c) == plugs.end()) {
-		printf("No plug\n");
+	if (plugs.find(c - 32) == plugs.end()) {
+		printf("No plug; %c\n", c);
 		return c;
 	}
 
