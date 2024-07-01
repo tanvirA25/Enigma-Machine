@@ -6,8 +6,8 @@ using namespace std;
 
 // All return true if OK, otherwise false.
 bool RedFileInterface::openForRead() {
-	if (!MyInFile) {
-		printf("Red not open for read\n");
+	if (MyInFile.is_open()) {
+		printf("Red already open for read\n");
 		return false;
 	}
 	printf("Red open for read\n");
@@ -16,8 +16,8 @@ bool RedFileInterface::openForRead() {
 }
 
 bool RedFileInterface::openForWrite() {
-	if (!MyInFile) {
-		printf("Red not open for write\n");
+	if (MyInFile.is_open()) {
+		printf("Red already open for write\n");
 		return false;
 	}
 	printf("Red open for write\n");
@@ -54,12 +54,11 @@ bool RedFileInterface::eof() {
 }
 
 bool RedFileInterface::close() {
-	if (!MyInFile) {
-		printf("Red not close file\n");
-		return false;
+	if (MyInFile.is_open()) {
+		printf("Red close file\n");
+		MyInFile.close();
+		return true;
 	}
-	printf("Red close file\n");
-	MyInFile.flush();
-	MyInFile.close();
-	return true;
+	printf("Red not close file\n");
+	return false;
 }

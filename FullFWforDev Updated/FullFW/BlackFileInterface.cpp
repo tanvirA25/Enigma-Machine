@@ -6,8 +6,8 @@
 using namespace std;
 
 bool BlackFileInterface::openForRead() {
-	if (!MyInFile) {
-		printf("Black not open for read\n");
+	if (MyInFile.is_open()) {
+		printf("Black already open for read\n");
 		return false;
 	}
 	printf("Black open for read\n");
@@ -17,8 +17,8 @@ bool BlackFileInterface::openForRead() {
 
 
 bool BlackFileInterface::openForWrite() {
-	if (!MyInFile) {
-		printf("Black not open for write\n");
+	if (MyInFile.is_open()) {
+		printf("Black already open for write\n");
 		return false;
 	}
 	printf("Black open for write\n");
@@ -55,12 +55,11 @@ bool BlackFileInterface::eof() {
 }
 
 bool BlackFileInterface::close() {
-	if (!MyInFile) {
-		printf("Black not close file\n");
-		return false;
+	if (MyInFile.is_open()) {
+		printf("Black close file\n");
+		MyInFile.close();
+		return true;
 	}
-	printf("Black close file\n");
-	MyInFile.flush();
-	MyInFile.close();
-	return true;
+	printf("Black not close file\n");
+	return false;
 }

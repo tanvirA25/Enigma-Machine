@@ -26,9 +26,12 @@ void NESEncryptorControl::start() {
 				bf.putNextChar(c);
 				printf("End: %c\n", c);
 			}
+			bf.close();
+			rf.close();
+			AAS.sendEncryptOK();
 		}
 
-		AAS.sendEncryptOK();
+		
 
 		if (action == UserInput::DEC) {
 			bf.openForRead();
@@ -42,11 +45,13 @@ void NESEncryptorControl::start() {
 				rf.putNextChar(c);
 				printf("End: %c\n", c);
 			}
+			bf.close();
+			rf.close();
+			AAS.sendDecryptOK();
 		}
-		AAS.sendDecryptOK();
+		
 
-		bf.close();
-		rf.close();
+		
 
 	} while (true);
 
