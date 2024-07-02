@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include "Reflector.h"
 
-// This mayhaps needs to be changed.
-const unsigned char Reflector::getRefChar(const unsigned char ch) const {
-    return 0;
-};
-
+// array for mapping
 Reflector::Reflector() {
     numbers = {
         45, 58, 66, 47, 16, 25, 15, 88, 74,
@@ -18,17 +14,17 @@ Reflector::Reflector() {
             65, 8, 21, 26, 11, 48, 70, 17, 32, 33, 83,
             36, 87, 23, 85, 7, 27, 12, 40, 30, 37, 20,
     };
-    //numbers = { {61,7}, {55,51}, {73,54}, {57,94}, {84,82}, {59,21}, {3,91}, {7,88}, {8,74}, {9,62},
-    //    {10,51}, {,} }
+      
 }
 
+// gets the char and gets reflected
 const unsigned char Reflector::reflect(const unsigned char c) const {
     printf("Reflect begin\n");
     if (c < OFFSET || c > LAST) {
+        // if the character is out of range terminate
         std::cout << "Bad value: " << c << "\nTERMINATING" << std::endl;
         std::exit(1);
     }
-    printf("gg\n");
     //printf("Reflect %c to %c\n", c, numbers[c-32] + 32);
     return static_cast<unsigned char> (numbers[c]);
 }
