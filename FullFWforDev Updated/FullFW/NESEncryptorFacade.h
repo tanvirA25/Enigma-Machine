@@ -9,7 +9,7 @@
 
 class NESEncryptorFacade
 {
-
+     // references
     Plugboard& PB;
     WheelAssy& WHASS;
     Reflector& REF;
