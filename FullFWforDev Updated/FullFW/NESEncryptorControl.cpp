@@ -22,7 +22,9 @@ void NESEncryptorControl::start() {
 				unsigned char c = rf.getNextChar();
 				if (rf.eof()) { break; }
 				printf("Start: %c\n", c);
+				c -= 32;
 				NEF.encrypt(c);
+				c += 32;
 				bf.putNextChar(c);
 				printf("End: %c\n", c);
 			}
@@ -31,8 +33,6 @@ void NESEncryptorControl::start() {
 			AAS.sendEncryptOK();
 		}
 
-		
-
 		if (action == UserInput::DEC) {
 			bf.openForRead();
 			rf.openForWrite();
@@ -40,8 +40,9 @@ void NESEncryptorControl::start() {
 				unsigned char c = bf.getNextChar();
 				if (bf.eof()) { break; }
 				printf("Start: %c\n", c);
+				c -= 32;
 				NEF.decrypt(c);
-				printf("red: %c\n", c);
+				c += 32;
 				rf.putNextChar(c);
 				printf("End: %c\n", c);
 			}
@@ -49,9 +50,6 @@ void NESEncryptorControl::start() {
 			rf.close();
 			AAS.sendDecryptOK();
 		}
-		
-
-		
 
 	} while (true);
 

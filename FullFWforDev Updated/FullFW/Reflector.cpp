@@ -24,15 +24,13 @@ Reflector::Reflector() {
 
 const unsigned char Reflector::reflect(const unsigned char c) const {
     printf("Reflect begin\n");
-    if (c == 10) return 31;
-    if (c == 31) return 10;
-    if (c < OFFSET || c > LAST) {
+    if (c < 0 || c > 96) {
         std::cout << "Bad value: " << c << "\nTERMINATING" << std::endl;
         std::exit(1);
     }
     printf("gg\n");
-    printf("Reflect %c to %c\n", c, numbers[c-32] + 32);
-    return static_cast<unsigned char> (numbers[c-32] + 32);
+    //printf("Reflect %c to %c\n", c, numbers[c-32] + 32);
+    return static_cast<unsigned char> (numbers[c]);
 }
 
 

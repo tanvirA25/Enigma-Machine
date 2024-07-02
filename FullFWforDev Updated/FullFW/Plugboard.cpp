@@ -11,19 +11,17 @@ Plugboard::~Plugboard() {}
 
 unsigned char Plugboard::getPBC(unsigned char c)
 {
-	printf("Plugboard start: %c\n", c);
-	if (c == 10) { return 31; }
-	if (c == 31) { return 10; }
-	if (c < OFFSET || c > LAST) {
+	//printf("Plugboard start: %c\n", c);
+	if (c < 0 || c > 96) {
 		printf("Bad value: %c\nTERMINATING\n", c);
 		std::exit(1);
 	}
-	if (plugs.find(c - 32) == plugs.end()) {
+	if (plugs.find(c) == plugs.end()) {
 		printf("No plug; %c\n", c);
 		return c;
 	}
 
 	printf("Plugboard changes %c to %c\n", c, plugs[c]);
-    return plugs[c-32] + 32;
+   return plugs[c];
 
 }
