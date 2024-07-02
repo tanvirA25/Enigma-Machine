@@ -6,6 +6,7 @@ class Plugboard {
 
       enum { DEBUG = false };
 
+      // var to use in the cpp file
       const static unsigned char OFFSET = 0;
       const static unsigned char LAST = 95;
 
