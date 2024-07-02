@@ -15,17 +15,17 @@ unsigned char WheelAssy::rToL(unsigned char c) {
     short c1 = wheel1->getRtoL(c);
     short c2 = wheel2->getRtoL(c1);
     short c3 = wheel3->getRtoL(c2);
-    printf("%c\n", c3 + 32);
-	return c3 + 32;
+    printf("%c\n", c3);
+	return c ;
 }
 
 unsigned char WheelAssy::lToR(unsigned char c) {
     printf("Left to right\n");
-    short c3 = wheel1->getLtoR(c);
+    short c3 = wheel3->getLtoR(c);
     short c2 = wheel2->getLtoR(c3);
-    short c1 = wheel3->getLtoR(c2);
-    printf("%c\n", c1 + 32);
-    return c1 + 32;
+    short c1 = wheel1->getLtoR(c2);
+    printf("%c\n", c1 );
+    return c1;
 }
 
 // Resets the wheels to their initial positions
