@@ -24,7 +24,7 @@ Reflector::Reflector() {
 
 const unsigned char Reflector::reflect(const unsigned char c) const {
     printf("Reflect begin\n");
-    if (c < 0 || c > 96) {
+    if (c < OFFSET || c > LAST) {
         std::cout << "Bad value: " << c << "\nTERMINATING" << std::endl;
         std::exit(1);
     }
