@@ -10,7 +10,7 @@ class Reflector {
     const static unsigned char OFFSET = 32;
     const static unsigned char LAST = 127;
 
-    std::array<int, 95> numbers;
+    std::array<int, 96> numbers;
     const unsigned char getRefChar(const unsigned char ch) const;
 
     // Constructor is private.
