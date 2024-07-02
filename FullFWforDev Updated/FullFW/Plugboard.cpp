@@ -20,7 +20,7 @@ unsigned char Plugboard::getPBC(unsigned char c)
 }
 	// if there is no mapping return the original char
 	if (plugs.find(c) == plugs.end()) {
-		printf("No plug; %c\n", c);
+		// printf("No plug; %c\n", c);
 		return c;
 	}
 	// else return the changed char
