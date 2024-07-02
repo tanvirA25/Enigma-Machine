@@ -12,10 +12,10 @@ Plugboard::~Plugboard() {}
 unsigned char Plugboard::getPBC(unsigned char c)
 {
 	//printf("Plugboard start: %c\n", c);
-	if (c < 0 || c > 96) {
-		printf("Bad value: %c\nTERMINATING\n", c);
-		std::exit(1);
-	}
+	if (c < OFFSET || c > LAST) {
+	printf("Bad value: %c\nTERMINATING\n", c);
+	std::exit(1);
+}
 	if (plugs.find(c) == plugs.end()) {
 		printf("No plug; %c\n", c);
 		return c;
