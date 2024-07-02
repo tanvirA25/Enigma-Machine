@@ -6,8 +6,8 @@ class Plugboard {
 
       enum { DEBUG = false };
 
-      const static unsigned char OFFSET = 32;
-      const static unsigned char LAST = 127;
+      const static unsigned char OFFSET = 0;
+      const static unsigned char LAST = 95;
 
       std::map<int, int> plugs;
 
