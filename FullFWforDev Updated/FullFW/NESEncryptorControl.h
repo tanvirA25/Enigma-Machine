@@ -10,9 +10,8 @@
 
 
 class NESEncryptorControl
-
 {
-
+	// references
 	ACSInterface& ACSI;
 	AASInterface& AAS;
 	UserInput& UI;
@@ -20,6 +19,7 @@ class NESEncryptorControl
 	BlackFileInterface& bf;
 	NESEncryptorFacade& NEF;
 
+	// constructors
 	NESEncryptorControl() :
 		ACSI(ACSInterface::Instance()),
 		AAS(AASInterface::Instance()),
