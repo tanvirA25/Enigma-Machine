@@ -29,7 +29,7 @@ bool NESEncryptorFacade::decrypt(unsigned char& c) {
 	c = PB.getPBC(c);
 	WHASS.advance();
 	
-	printf("End decrypt: %c\n", c);
+	
 	return true;
 }
 
